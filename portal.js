@@ -1,7 +1,9 @@
 let allStudents = [];
 if(localStorage.studentPortal){
-    (allStudents= JSON.parse(localStorage.getItem("studentPortal")))
+    oldData = JSON.parse(localStorage.getItem("studentPortal"))
+    allStudents = oldData
 }
+console.log(allStudents)
 const signUp = () => {
       var newStudents = {
         FirstName: firstN.value,
@@ -18,10 +20,11 @@ const signUp = () => {
 
 
 
-  let oldData = JSON.parse(localStorage.getItem("studentPortal")) 
+  
+const signIn =() => {
+    let oldData = JSON.parse(localStorage.getItem("studentPortal")) 
    allStudents = oldData
 console.log(allStudents)
-const signIn =() => {
         var userFound = false
         for (var index = 0; index < allStudents.length; index++) {
             console.log(index)
