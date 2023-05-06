@@ -22,13 +22,13 @@ const signUp = () => {
 
   
 const signIn =() => {
-    let oldData = JSON.parse(localStorage.getItem("studentPortal")) 
-   allStudents = oldData
-console.log(allStudents)
+    // let oldData = JSON.parse(localStorage.getItem("studentPortal")) 
+//    allStudents = oldData
+// console.log(allStudents)
         var userFound = false
         for (var index = 0; index < allStudents.length; index++) {
-            console.log(index)
-             if(emaiL.value==allStudents[index].email && passW.value==allStudents[index].password){
+            // console.log(index)
+             if(em.value == allStudents[index].Email && pass.value == allStudents[index].Password){
                 console.log(index)
                 localStorage.setItem("userIndex",index)
                 userFound = true
@@ -41,3 +41,38 @@ console.log(allStudents)
             alert("Student Data Not Found")
         }
     }
+
+    const dispalyStudentData = ()=>{
+        show.innerHTML += `
+        <tr>
+            <th>S/N</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Gender</th>
+            <th>Password</th>
+            <th>Action</th>
+            </tr>
+        `
+        for (let index = 0; index < allStudents.length; index++) {
+              show.innerHTML += `
+              <tr>
+                <td>${index+1}</td>
+                <td>${allStudents[index].Firstname}</td>
+                <td>${allStudents[index].Lastname}</td>
+                <td>${allStudents[index].Email}</td>
+                <td>${allStudents[index].PhoneNumber}</td>
+                <td>${allStudents[index].Gender}</td>
+                <td>${allStudents[index].Password}</td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteUser(${index})">Delete User</button>
+                     <button class="btn btn-warning" onclick="editUser(${index})">Edit User</button>
+                    </td>
+                </tr>
+              `
+        
+       }
+        }
+       
+    
